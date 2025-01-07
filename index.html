@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Made S1 - Serveur Minecraft</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #1a1a2e;
+            color: #eaeaea;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        header {
+            background-color: #0f3460;
+            padding: 20px;
+            width: 100%;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        header img {
+            max-width: 200px;
+            height: auto;
+            margin-bottom: 10px;
+        }
+        nav {
+            display: flex;
+            gap: 15px;
+        }
+        nav a {
+            color: #eaeaea;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 16px;
+            padding: 8px 12px;
+            border-radius: 8px;
+            background-color: #16213e;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        nav a:hover, nav a.active {
+            background-color: #e94560;
+            color: #ffffff;
+        }
+        .container {
+            width: 80%;
+            max-width: 1200px;
+            margin: 20px auto;
+        }
+        .container section {
+            display: none;
+            padding: 20px;
+            background-color: #16213e;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        .container section.active {
+            display: block;
+        }
+        a {
+            color: #ADD8E6; /* Bleu clair */
+        }
+        footer {
+            background-color: #0f3460;
+            color: #eaeaea;
+            padding: 10px 0;
+            text-align: center;
+            width: 100%;
+            box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const navLinks = document.querySelectorAll("nav a");
+            const sections = document.querySelectorAll(".container section");
+
+            function activateSection(targetID) {
+                sections.forEach(section => {
+                    section.classList.remove("active");
+                    if (section.id === targetID) {
+                        section.classList.add("active");
+                    }
+                });
+
+                navLinks.forEach(link => link.classList.remove("active"));
+                document.querySelector(`nav a[href="#${targetID}"]`).classList.add("active");
+            }
+
+            navLinks.forEach(link => {
+                link.addEventListener("click", (e) => {
+                    e.preventDefault();
+                    const targetID = link.getAttribute("href").substring(1);
+                    activateSection(targetID);
+                });
+            });
+
+            // Activate the first section by default
+            if (sections.length > 0) {
+                activateSection(sections[0].id);
+            }
+        });
+    </script>
+</head>
+<body>
+    <header>
+        <img src="MadeS1.png" alt="Logo Made Saison 1">
+        <nav>
+            <a href="#about">À propos</a>
+            <a href="#join">Rejoindre</a>
+            <a href="#community">Communauté</a>
+            <a href="#contact">Contact</a>
+        </nav>
+    </header>
+
+    <div class="container">
+        <section id="about" class="active">
+            <h1>Bienvenue sur Made S1</h1>
+            <p>Découvrez un serveur Minecraft unique en son genre avec une communauté passionnée.</p>
+        </section>
+
+        <section id="join">
+            <h2>Comment rejoindre</h2>
+            <p>Connectez-vous avec l'adresse IP : <strong>play.mades1.fr</strong></p>
+        </section>
+
+        <section id="community">
+            <h2>Communauté</h2>
+            <p>Rejoignez-nous sur Discord pour discuter avec les autres joueurs et suivre les dernières nouvelles : <a href="https://discord.gg/WNVnSrSzBA" target="_blank">discord.gg/WNVnSrSzBA</a>.</p>
+        </section>
+
+        <section id="contact">
+            <h2>Contact</h2>
+            <p>Besoin d'aide ? Envoyez-nous un email à : <a href="mailto:angedrachipmailpro@etik.com">angedrachipmailpro@etik.com</a></p>
+        </section>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Made S1. Tous droits réservés.</p>
+    </footer>
+</body>
+</html>
