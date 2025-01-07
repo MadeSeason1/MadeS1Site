@@ -66,6 +66,16 @@
         a {
             color: #ADD8E6; /* Bleu clair */
         }
+        .hidden-button {
+            display: none;
+        }
+        #hiddenMessage {
+            display: none;
+            margin-top: 20px;
+            color: #e94560;
+            font-size: 18px;
+            font-weight: bold;
+        }
         footer {
             background-color: #0f3460;
             color: #eaeaea;
@@ -104,6 +114,17 @@
             if (sections.length > 0) {
                 activateSection(sections[0].id);
             }
+
+            // Show hidden message when button is clicked
+            const hiddenButton = document.getElementById("hiddenButton");
+            const hiddenMessage = document.getElementById("hiddenMessage");
+            
+            hiddenButton.addEventListener("click", () => {
+                hiddenMessage.style.display = "block";
+            });
+
+            // Show the hidden button
+            hiddenButton.style.display = "block";
         });
     </script>
 </head>
@@ -142,6 +163,9 @@
 
     <footer>
         <p>&copy; 2025 Made S1. Tous droits réservés.</p>
+        <button id="hiddenButton" class="hidden-button">Afficher le message caché</button>
+        <div id="hiddenMessage">J'AI DÉJÀ JOUÉ À CE JEU AVANT</div>
     </footer>
 </body>
 </html>
+
